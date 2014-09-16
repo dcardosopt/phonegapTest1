@@ -10,25 +10,25 @@ app.config(function ($routeProvider) {
     $routeProvider.when('/page2', {templateUrl: 'pages/page2.html'});
 });
 
-app.controller('MainController', function($rootScope, $scope){
+app.controller('MainController', function ($rootScope, $scope) {
 
-    $rootScope.$on("$routeChangeStart", function(){
+    $rootScope.$on("$routeChangeStart", function () {
         $rootScope.loading = true;
     });
 
-    $rootScope.$on("$routeChangeSuccess", function(){
+    $rootScope.$on("$routeChangeSuccess", function () {
         $rootScope.loading = false;
     });
 
     var scrollItems = [];
 
-    for (var i=1; i<=10; i++) {
+    for (var i = 1; i <= 10; i++) {
         scrollItems.push("Item " + i);
     }
 
     $scope.scrollItems = scrollItems;
     $scope.invoice = {payed: true};
-    $scope.userAgent =  navigator.userAgent;
+    $scope.userAgent = navigator.userAgent;
 
     $scope.chatUsers = [
         { name: "Carlos  Flowers", online: true },
@@ -45,8 +45,11 @@ app.controller('MainController', function($rootScope, $scope){
 
     var options = { limit: 1 };
 
+
     $scope.startRecord = function () {
         navigator.device.capture.captureVideo(captureSuccess, captureError, options);
+
+        //navigator.camera.getPicture(captureSuccess, captureError, options);
     };
 
     // capture callback
